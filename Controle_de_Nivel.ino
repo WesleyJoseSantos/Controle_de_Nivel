@@ -6,7 +6,7 @@
 //*************************************************************************************************/
 
 //Parametros
-#define TIMER_SEGUNDOS 5  //5min
+#define TIMER_SEGUNDOS 5*60  //5min
 
 //Entradas
 #define pinoSensorNivel1 2
