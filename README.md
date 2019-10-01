@@ -1,6 +1,10 @@
 # Controle_de_Nivel
 Software para controle de nível baseado na plataforma Arduino
-2 Sensores de nível, 2 Bombas, 1 led e um buzzer para alarme.
+
+1 Sensor de nível baixo: aciona uma das bombas. A cada acionamento alterna a bomba a ser ligada.
+1 Sensor de nível crítico: aciona a bomba que estiver parada e bloqueia a bomba que estava rodando. Aciona o alarme.
+2 Bombas: controle do nível do tanque
+1 led e 1 buzzer para alarme: acionam para sinalizar anomalia no sistema
 
 Funcionamento:
 
