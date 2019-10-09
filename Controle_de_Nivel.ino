@@ -6,7 +6,8 @@
 //*************************************************************************************************/
 
 //Parametros
-#define TIMER_SEGUNDOS 300  //300 segundos = 5min
+#define TIMER_SEGUNDOS  300      //300 segundos = 5min
+#define FILTRO_OFF_SEGUNDOS 3    //Filtro para ignorar ruidos causados apos o delisgamento da bomba. 0 para desabilitar.
 
 //Entradas
 #define pinoSensorNivel1 2
@@ -34,13 +35,13 @@ void setup()
 void loop()
 {
     // coloque seu codigo principal aqui, para executar repetidamente:
-    if(nivelBaixo() && !nivelCritico())                 //Se o nivel esta baixo, mas n�o cr�tico
+    if(nivelBaixo() && !nivelCritico())                 //Se o nivel esta baixo, mas nao critico
     {
         ligaBomba();                                        //Liga bomba
         timer_seconds(0);                                  //Reinicia temporizador
         while(!timer_seconds(TIMER_SEGUNDOS))              //Enquanto temporizador esta rodando
         {
-            verificaNivelCritico();                             //Verifica se o nivel ficou cr�tico
+            verificaNivelCritico();                             //Verifica se o nivel ficou critico
         }
         desligaBomba();                                     //Desliga a bomba ao final do temporizador
     }
@@ -80,6 +81,7 @@ void desligaBomba()
 {
     digitalWrite(pinoBomba1, LOW);
     digitalWrite(pinoBomba2, LOW);
+    delay(FILTRO_OFF_SEGUNDOS * 1000);
     Serial.println("Bombas Desligadas");
 }
 
